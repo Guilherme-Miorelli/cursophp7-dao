@@ -10,19 +10,19 @@ class Sql extends PDO {
 
 	}
 //essa função tem objetivo de definir os valores dos parâmetros que passamos para a query,Esse método realiza um laço de repetição, chamando o método setParam() , no singular, que define um parâmetro por vez, com o foreach() , é possível definir vários parâmetros, um método usa o outro para definir um parâmetro de cada vez
-	private function setParams($statment, $parameters = array()){//busca varios dados no bd
+	private function setParams($statement, $parameters = array()){//busca varios dados no bd
 
 		foreach ($parameters as $key => $value) {
 			
-			$this->setParam($key, $value);
+			$this->setParam($statement, $key, $value);
 
 		}
 
 	}
 
-	private function setParam($statment, $key, $value){//busca somente um dado no BD
+	private function setParam($statement, $key, $value){//busca somente um dado no BD
 
-		$statment->bindParam($key, $value);
+		$statement->bindParam($key, $value);
 
 	}
 //O método query() realiza a preparação do script do MySQL, define seus parâmetros e executa o comando. Em poucas palavras: ele executa a query no Banco de Dados
